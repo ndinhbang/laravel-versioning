@@ -1,9 +1,10 @@
 {
-    "name": "neondigital/larvel-versioning",
+    "name": "neondigital/laravel-versioning",
     "description": "Versioning for Eloquent models",
     "type": "library",
     "require": {
-      "laravel/framework": ">=5.8"
+      "laravel/framework": ">=5.8",
+      "ramsey/uuid": "3.9.*"
     },
     "require-dev": {
       "phpunit/phpunit": "^8.4@dev",
@@ -26,5 +27,15 @@
       "psr-4": {
         "Tests\\": "tests/"
       }
+    },
+    "extra": {
+        "laravel": {
+            "providers" : [
+              "NeonDigital\\Versioning\\VersioningServiceProvider"
+            ],
+            "aliases": {
+              "Versioning": "NeonDigital\\Versioning\\Facade"
+            }
+        }
     }
   }
