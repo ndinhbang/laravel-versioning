@@ -16,7 +16,7 @@ class CreateVersionsTable extends Migration
         Schema::create('versions', function (Blueprint $table) {
             $table->increments('id');
             $table->morphs('versionable');
-            $table->integer('user_id')->nullable()->unsigned();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
             $table->integer('relation_id')->nullable()->unsigned();
             $table->foreign('relation_id')->references('id')->on('versions')->onDelete('cascade');
