@@ -20,10 +20,10 @@ class CreateVersionsTable extends Migration
             $userIdColType = Schema::getColumnType('users', 'id');
 
             if ($userIdColType == 'integer') {
-                $table->unsignedInteger('user_id');
+                $table->unsignedInteger('user_id')->nullable();
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
             } else {
-                $table->foreignId('user_id')->constrained()->onDelete('SET NULL');
+                $table->foreignId('user_id')->nullable()->constrained()->onDelete('SET NULL');
             }
             $table->integer('relation_id')->nullable()->unsigned();
             $table->foreign('relation_id')->references('id')->on('versions')->onDelete('cascade');
